@@ -23,27 +23,35 @@ jobs:
         with:
           distribution: temurin
           java-version: '17'
-          cache: gradle
 
       - name: Set up Gradle
         uses: gradle/actions/setup-gradle@v6
         with:
+          cache-disabled: true
           gradle-version: '8.10.2'
 
-      - name: Find Android project
+      - name: Locate Gradle project
         id: project
         shell: bash
         run: |
-          SETTINGS=$(find . -name "settings.gradle.kts" -o -name "settings.gradle" | head -n 1)
+          echo "Repository contents:"
+          find . -maxdepth 4 -type f | sort
+
+          SETTINGS=$(find . -type f \( \
+            -name "settings.gradle.kts" -o \
+            -name "settings.gradle" \
+          \) | head -n 1)
 
           if [ -z "$SETTINGS" ]; then
-            echo "ERROR: No Gradle settings file found."
-            find . -maxdepth 4 -type f | sort
+            echo "::error::No Gradle settings file was found."
             exit 1
           fi
 
           PROJECT_DIR=$(dirname "$SETTINGS")
-          echo "Android project found at: $PROJECT_DIR"
+
+          echo "Found Gradle project:"
+          echo "$PROJECT_DIR"
+
           echo "dir=$PROJECT_DIR" >> "$GITHUB_OUTPUT"
 
       - name: Build Debug APK
