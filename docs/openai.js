@@ -1,0 +1,2 @@
+const OPENAI_MODEL='gpt-5';
+window.MultiAIOpenAI={model:OPENAI_MODEL,key:()=>localStorage.getItem('multiai_openai')||'',async call(q,m){const k=this.key();if(!k)throw Error('No OpenAI API key saved');const r=await fetch('https://api.openai.com/v1/responses',{method:'POST',headers:{'Content-Type':'application/json',Authorization:'Bearer '+k},body:JSON.stringify({model:m||OPENAI_MODEL,input:q})});const j=await r.json();if(!r.ok)throw Error(j.error?.message||'OpenAI HTTP '+r.status);return j.output_text||j.output?.flatMap(x=>x.content||[]).map(x=>x.text||'').join('')||''}};
