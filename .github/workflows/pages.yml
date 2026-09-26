@@ -28,6 +28,8 @@ jobs:
         uses: actions/checkout@v4
       - name: Setup Pages
         uses: actions/configure-pages@v5
+        with:
+          enablement: true
       - name: Prepare site
         run: |
           test -f web/index.html
@@ -37,7 +39,7 @@ jobs:
           test -f web/service-worker.js
           touch web/.nojekyll
       - name: Upload Pages artifact
-        uses: actions/upload-pages-artifact@v3
+        uses: actions/upload-pages-artifact@v4
         with:
           path: ./web
       - name: Deploy to GitHub Pages
