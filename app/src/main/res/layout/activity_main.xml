@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent" android:layout_height="match_parent" android:orientation="vertical" android:padding="20dp">
     <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:text="MultiAI" android:textSize="30sp" android:textStyle="bold"/>
-    <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="4dp" android:text="One chat. Multiple AI providers." android:textSize="16sp"/>
+    <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="4dp" android:text="Gemini • Groq • OpenRouter" android:textSize="16sp"/>
     <Spinner android:id="@+id/providerSpinner" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="20dp"/>
-    <EditText android:id="@+id/apiKey" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="12dp" android:hint="API key (optional for Ollama)" android:inputType="textPassword"/>
+    <EditText android:id="@+id/apiKey" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="12dp" android:hint="API key" android:inputType="textPassword"/>
     <EditText android:id="@+id/prompt" android:layout_width="match_parent" android:layout_height="0dp" android:layout_weight="1" android:layout_marginTop="12dp" android:gravity="top" android:hint="Ask anything..." android:inputType="textMultiLine"/>
     <Button android:id="@+id/sendButton" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Send"/>
     <TextView android:id="@+id/response" android:layout_width="match_parent" android:layout_height="0dp" android:layout_weight="1" android:layout_marginTop="12dp" android:text="Response will appear here." android:textSize="16sp"/>
